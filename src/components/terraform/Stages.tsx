@@ -1,6 +1,7 @@
+import { Fragment } from "react";
 import { Choice, TRI } from "./Choice";
 import { Bullets, Cites, EmptyState, EvidenceTag, Panel } from "./ui";
-import { kb, record, recordsByCategory } from "@/lib/terraform/kb";
+import { kb, record, recordsByCategory, rule } from "@/lib/terraform/kb";
 import type { Assessment, Observations } from "@/lib/terraform/types";
 import { cn } from "@/lib/utils";
 
@@ -102,7 +103,7 @@ export function InterpretStage({ a }: { a: Assessment }) {
       <div className="grid gap-6 lg:grid-cols-2">
         <Panel tag="observed" title="What you reported">
           <dl className="grid grid-cols-[auto_1fr] gap-x-4 gap-y-1.5 text-sm">
-            {a.observedSummary.map((s) => (<><dt key={s.label + "t"} className="text-muted-foreground">{s.label}</dt><dd key={s.label + "d"} className={cn((s.value === "Unknown" || s.value === "Not checked" || s.value === "Unclear result") && "text-unknown")}>{s.value}</dd></>))}
+            {a.observedSummary.map((s) => (<Fragment key={s.label}><dt className="text-muted-foreground">{s.label}</dt><dd className={cn((s.value === "Unknown" || s.value === "Not checked" || s.value === "Unclear result") && "text-unknown")}>{s.value}</dd></Fragment>))}
           </dl>
         </Panel>
         <Panel tag="interpret" title="Clues considered">
@@ -254,4 +255,3 @@ export function HarvestStage() {
   );
 }
 
-import { rule } from "@/lib/terraform/kb";
