@@ -39,7 +39,7 @@ const REQUIRED: (keyof Observations)[] = [
 /** Returns field -> message for missing answers. "Unknown" and "Not checked" are valid answers. */
 export function validate(o: Observations, fields: (keyof Observations)[] = REQUIRED): Record<string, string> {
   const errors: Record<string, string> = {};
-  for (const f of fields) if (o[f] === "") errors[f] = "Choose an answer — 'Unknown' or 'Not checked' are fine.";
+  for (const f of fields) if (f !== "soilColour" && f !== "notes" && o[f] === "") errors[f] = "Choose an answer — 'Unknown' or 'Not checked' are fine.";
   if (o.soilColour.length > 120) errors["soilColour"] = "Keep the description under 120 characters.";
   return errors;
 }
