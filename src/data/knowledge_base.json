@@ -1,0 +1,498 @@
+{
+  "metadata": {
+    "project": "TERRAFORM",
+    "scenario": "Scenario 3 - Sodic Clay Plateau",
+    "version": "0.1-starter",
+    "purpose": "Evidence-aware starter knowledge base for a household-observation soil assessment prototype.",
+    "limitations": [
+      "Household checks are screening observations, not laboratory diagnoses.",
+      "Do not diagnose sodicity or salinity from one visual sign.",
+      "Do not prescribe fixed amendment doses or heavy flushing when drainage or water quality is unknown.",
+      "Survivor-facing checks must use eyes, hands, and household items, without instruments, lab readings, or fixed scientific thresholds.",
+      "Crop-specific advice must be verified for the local climate and growing conditions before being presented as a strong recommendation."
+    ]
+  },
+  "assessment_categories": [
+    {
+      "id": "possible_sodicity",
+      "label": "Possible sodium-affected soil",
+      "meaning": "Evidence may suggest unstable soil structure associated with sodium, but does not confirm sodicity.",
+      "must_not_claim": "Confirmed sodicity"
+    },
+    {
+      "id": "possible_salinity",
+      "label": "Possible salinity concern",
+      "meaning": "Observations may suggest salt accumulation, but visual residue alone cannot establish soil salinity.",
+      "must_not_claim": "Confirmed salinity"
+    },
+    {
+      "id": "possible_compaction_or_heavy_clay",
+      "label": "Possible heavy clay or compaction",
+      "meaning": "Poor infiltration may relate to texture, compaction, surface sealing, drainage, or mixed causes.",
+      "must_not_claim": "Sodicity ruled out"
+    },
+    {
+      "id": "mixed_or_insufficient",
+      "label": "Mixed evidence or insufficient information",
+      "meaning": "Available observations do not support one defensible explanation.",
+      "must_not_claim": "Confident diagnosis"
+    }
+  ],
+  "knowledge_records": [
+    {
+      "id": "SOIL_001",
+      "category": "soil_concept",
+      "title": "Sodicity can damage soil structure",
+      "fact": "Excess sodium associated with the soil exchange complex can contribute to clay dispersion and degraded soil physical properties, including poor infiltration.",
+      "use_in_reasoning": "Treat dispersion-like observations as a clue that may support a sodium-related concern, not as confirmation.",
+      "limitations": [
+        "Household observations cannot measure exchangeable sodium or confirm sodicity."
+      ],
+      "evidence_status": "SOURCE_SUPPORTED_GENERAL",
+      "source_ids": [
+        "SRC_ICAR_BLACK_SODIC",
+        "SRC_ICAR_SALT_AFFECTED"
+      ]
+    },
+    {
+      "id": "SOIL_002",
+      "category": "soil_concept",
+      "title": "Salinity and sodicity differ",
+      "fact": "Saline and sodic soils have different characteristics and can require different management strategies.",
+      "use_in_reasoning": "Keep possible salinity and possible sodicity as separate interpretations.",
+      "limitations": [
+        "The distinction cannot be confirmed from appearance alone."
+      ],
+      "evidence_status": "SOURCE_SUPPORTED_GENERAL",
+      "source_ids": [
+        "SRC_ICAR_SALT_AFFECTED"
+      ]
+    },
+    {
+      "id": "SOIL_003",
+      "category": "soil_concept",
+      "title": "Poor infiltration has multiple possible causes",
+      "fact": "Water ponding and surface crusting do not, by themselves, establish that sodium or soluble salts are the cause.",
+      "use_in_reasoning": "Consider heavy clay, compaction, surface sealing, drainage constraints, sodicity, or mixed causes.",
+      "limitations": [
+        "Further evidence may be needed to distinguish the cause."
+      ],
+      "evidence_status": "CASE_STUDY_REQUIREMENT",
+      "source_ids": [
+        "SRC_CASE_DOSSIER"
+      ]
+    },
+    {
+      "id": "CHECK_001",
+      "category": "household_check",
+      "title": "Moist soil squeeze or ribbon check",
+      "purpose": "Explore whether moist soil behaves like clay-rich soil.",
+      "materials": [
+        "Small soil sample",
+        "A little water",
+        "Hands"
+      ],
+      "procedure": [
+        "Moisten a small sample gradually until workable, not runny.",
+        "Squeeze and roll it gently between fingers.",
+        "Observe whether it holds together and whether a ribbon can form."
+      ],
+      "possible_interpretation": "Soil that moulds readily or forms a ribbon may contain substantial clay.",
+      "cannot_prove": [
+        "Sodicity",
+        "Salinity",
+        "Exact clay percentage",
+        "Drainage performance across the whole plot"
+      ],
+      "next_step": "Combine with the crumb-in-water and drainage observations.",
+      "evidence_status": "CASE_STUDY_REQUIREMENT",
+      "source_ids": [
+        "SRC_CASE_DOSSIER"
+      ]
+    },
+    {
+      "id": "CHECK_002",
+      "category": "household_check",
+      "title": "Dry soil crumb in still water",
+      "purpose": "Observe whether a dry soil crumb stays intact or disperses in still water.",
+      "materials": [
+        "Dry soil crumb",
+        "Clear household container",
+        "Still water"
+      ],
+      "procedure": [
+        "Place a small dry crumb gently in still water.",
+        "Do not stir or shake.",
+        "Observe whether it mostly holds together, breaks apart, or makes the water cloudy."
+      ],
+      "possible_interpretation": "Visible dispersion may support concern about unstable soil structure and a possible sodium-related problem.",
+      "cannot_prove": [
+        "Confirmed sodicity",
+        "Soil salt concentration",
+        "Correct amendment or application rate"
+      ],
+      "next_step": "Combine with other observations; if unclear, report uncertainty.",
+      "evidence_status": "CASE_STUDY_REQUIREMENT",
+      "source_ids": [
+        "SRC_CASE_DOSSIER"
+      ]
+    },
+    {
+      "id": "CHECK_003",
+      "category": "household_check",
+      "title": "Dig-and-fill drainage observation",
+      "purpose": "Observe whether water enters the soil or remains ponded.",
+      "materials": [
+        "Small hand-dug hole",
+        "Bucket or container of water"
+      ],
+      "procedure": [
+        "Choose a representative safe spot.",
+        "Dig a small hole if it is safe to do so.",
+        "Add a bucketful of water and observe whether it drains or remains standing.",
+        "Do not treat one observation as a precise infiltration measurement."
+      ],
+      "possible_interpretation": "Persistent standing water suggests a water-entry or drainage concern.",
+      "cannot_prove": [
+        "Exact cause of poor drainage",
+        "Sodicity",
+        "That the entire plot behaves the same way"
+      ],
+      "next_step": "Avoid prolonged ponding; consider safe surface drainage and seek local advice if water remains standing.",
+      "safety_note": "Do not dig where buried utilities, unstable ground, or other hazards may be present.",
+      "evidence_status": "CASE_STUDY_REQUIREMENT",
+      "source_ids": [
+        "SRC_CASE_DOSSIER"
+      ]
+    },
+    {
+      "id": "CHECK_004",
+      "category": "household_check",
+      "title": "Water evaporation on a dark plate",
+      "purpose": "Look for residue after a small amount of water evaporates.",
+      "materials": [
+        "Clean dark plate",
+        "Small spoonful of water"
+      ],
+      "procedure": [
+        "Put a small spoonful of water on a clean dark plate.",
+        "Let it evaporate naturally in a safe place.",
+        "Observe whether residue remains."
+      ],
+      "possible_interpretation": "Residue may indicate dissolved material in the water sample.",
+      "cannot_prove": [
+        "That the residue is a particular salt",
+        "That the soil is saline",
+        "Whether the water is safe for irrigation"
+      ],
+      "safety_note": "Do not taste the water or residue. Keep the plate away from food preparation and children.",
+      "next_step": "Treat water quality as unknown without reliable evidence; do not recommend flushing based on this check alone.",
+      "evidence_status": "CASE_STUDY_REQUIREMENT",
+      "source_ids": [
+        "SRC_CASE_DOSSIER"
+      ]
+    },
+    {
+      "id": "TREAT_001",
+      "category": "soil_management",
+      "title": "Organic matter",
+      "general_guidance": "Suitable mature compost or clean plant residues may help build soil organic matter and support soil structure over time.",
+      "conditions": [
+        "Use clean, suitable material.",
+        "Avoid contaminated or diseased residues.",
+        "Avoid working wet clay if it would smear or compact."
+      ],
+      "limitations": [
+        "Organic matter alone does not prove or fully correct sodicity.",
+        "Improvement may take more than one growing season."
+      ],
+      "evidence_status": "SOURCE_SUPPORTED_GENERAL",
+      "source_ids": [
+        "SRC_ICAR_SALT_AFFECTED",
+        "SRC_ICAR_BLACK_SODIC"
+      ]
+    },
+    {
+      "id": "TREAT_002",
+      "category": "soil_management",
+      "title": "Surface mulch",
+      "general_guidance": "A suitable layer of clean plant mulch can protect the soil surface from direct impact and rapid drying.",
+      "conditions": [
+        "Use material suitable for the crop and local conditions.",
+        "Avoid contaminated or diseased material."
+      ],
+      "limitations": [
+        "Mulch does not diagnose or independently correct sodicity and may not solve ponding."
+      ],
+      "evidence_status": "REQUIRES_LOCAL_REVIEW",
+      "source_ids": [
+        "SRC_ICAR_SALT_AFFECTED"
+      ]
+    },
+    {
+      "id": "TREAT_003",
+      "category": "soil_management",
+      "title": "Calcium-rich amendment requires evidence",
+      "general_guidance": "Calcium-rich amendments such as gypsum are used in some sodic-soil management plans, but suitability and amount depend on soil and water conditions.",
+      "conditions": [
+        "Do not prescribe a fixed amount from visual signs alone.",
+        "Do not recommend automatically for ordinary compacted clay.",
+        "Consider drainage and how displaced salts would be managed."
+      ],
+      "limitations": [
+        "The household workflow cannot calculate a reliable amendment requirement.",
+        "Local agricultural advice may be needed."
+      ],
+      "evidence_status": "SOURCE_SUPPORTED_GENERAL",
+      "source_ids": [
+        "SRC_ICAR_SALT_AFFECTED",
+        "SRC_ICAR_BLACK_SODIC"
+      ]
+    },
+    {
+      "id": "TREAT_004",
+      "category": "water_management",
+      "title": "Do not automatically flush soil",
+      "general_guidance": "Avoid recommending heavy or repeated flushing when drainage is poor or irrigation-water quality is unknown.",
+      "conditions": [
+        "Water source quality is unknown.",
+        "Water remains ponded.",
+        "The cause of the soil problem is uncertain."
+      ],
+      "limitations": [
+        "This is a conservative safety gate, not a complete reclamation prescription."
+      ],
+      "evidence_status": "CASE_STUDY_REQUIREMENT",
+      "source_ids": [
+        "SRC_CASE_DOSSIER",
+        "SRC_ICAR_WATER"
+      ]
+    },
+    {
+      "id": "CROP_001",
+      "category": "crop_selection",
+      "title": "Crop suggestions must be conditional",
+      "general_guidance": "Offer multiple crop candidates only after considering soil condition, drainage, water availability, climate, and locally suitable varieties.",
+      "conditions": [
+        "Do not equate salt tolerance with tolerance of prolonged waterlogging.",
+        "Explain remaining risks and let the user choose.",
+        "Verify maturity ranges and tolerance from a suitable local source."
+      ],
+      "limitations": [
+        "A universal crop list is intentionally not included until local conditions and crop-specific evidence are verified."
+      ],
+      "evidence_status": "CASE_STUDY_REQUIREMENT",
+      "source_ids": [
+        "SRC_CASE_DOSSIER",
+        "SRC_ICAR_SALT_AFFECTED"
+      ]
+    },
+    {
+      "id": "CARE_001",
+      "category": "crop_care",
+      "title": "Care by growth stage",
+      "general_guidance": "Organize care into establishment, vegetative growth, reproductive stage, and harvest; check for wilting, crusting, standing water, nutrient problems, and disease symptoms.",
+      "conditions": [
+        "Adapt actions to the selected crop.",
+        "Do not automatically add water when soil is already ponded."
+      ],
+      "limitations": [
+        "Crop-specific intervals and treatments must be verified before use."
+      ],
+      "evidence_status": "CASE_STUDY_REQUIREMENT",
+      "source_ids": [
+        "SRC_CASE_DOSSIER"
+      ]
+    },
+    {
+      "id": "HARVEST_001",
+      "category": "harvest_and_regeneration",
+      "title": "Harvest and protect soil structure",
+      "general_guidance": "Use crop-specific visible maturity signs, harvest appropriately, and where safe return clean plant residues to support organic matter.",
+      "conditions": [
+        "Do not return diseased or contaminated residues without guidance.",
+        "Avoid working heavy clay when wet enough to smear or compact."
+      ],
+      "limitations": [
+        "Ripeness signs and harvest methods depend on the selected crop."
+      ],
+      "evidence_status": "CASE_STUDY_REQUIREMENT",
+      "source_ids": [
+        "SRC_CASE_DOSSIER"
+      ]
+    }
+  ],
+  "reasoning_rules": [
+    {
+      "id": "RULE_001",
+      "priority": 100,
+      "if": [
+        "Required observations are missing or contradictory"
+      ],
+      "then": {
+        "assessment_category": "mixed_or_insufficient",
+        "action": "Ask targeted follow-up questions",
+        "allow_strong_diagnosis": false
+      },
+      "explanation": "Do not fill gaps with invented observations.",
+      "evidence_status": "ENGINEERING_RULE"
+    },
+    {
+      "id": "RULE_002",
+      "priority": 90,
+      "if": [
+        "Water remains ponded or drainage appears poor"
+      ],
+      "then": {
+        "action": "Flag drainage concern",
+        "avoid": [
+          "Automatic heavy flushing",
+          "Increasing irrigation without checking conditions"
+        ]
+      },
+      "explanation": "Water management must be considered alongside soil repair.",
+      "evidence_status": "CASE_STUDY_REQUIREMENT"
+    },
+    {
+      "id": "RULE_003",
+      "priority": 80,
+      "if": [
+        "Dry crumb visibly disperses in still water"
+      ],
+      "then": {
+        "assessment_category": "possible_sodicity",
+        "action": "Explain that unstable structure is a clue and gather additional evidence",
+        "allow_strong_diagnosis": false
+      },
+      "explanation": "A household crumb check is suggestive, not definitive.",
+      "evidence_status": "CASE_STUDY_REQUIREMENT"
+    },
+    {
+      "id": "RULE_004",
+      "priority": 80,
+      "if": [
+        "White residue is observed after water evaporates"
+      ],
+      "then": {
+        "assessment_category": "possible_salinity",
+        "action": "Explain the limitation and investigate water/soil context",
+        "allow_strong_diagnosis": false
+      },
+      "explanation": "Residue may come from dissolved material and does not prove soil salinity.",
+      "evidence_status": "CASE_STUDY_REQUIREMENT"
+    },
+    {
+      "id": "RULE_005",
+      "priority": 95,
+      "if": [
+        "Irrigation water quality is unknown"
+      ],
+      "then": {
+        "action": "Mark water quality as unknown",
+        "avoid": [
+          "Claiming the water is safe",
+          "Recommending heavy flushing based only on visual checks"
+        ]
+      },
+      "explanation": "The plate check cannot determine irrigation-water safety.",
+      "evidence_status": "ENGINEERING_RULE"
+    },
+    {
+      "id": "RULE_006",
+      "priority": 85,
+      "if": [
+        "Sodicity is not adequately supported by available evidence"
+      ],
+      "then": {
+        "action": "Do not prescribe gypsum or another calcium-rich amendment automatically"
+      },
+      "explanation": "Amendment choice and amount depend on the underlying soil and water conditions.",
+      "evidence_status": "SOURCE_SUPPORTED_GENERAL"
+    }
+  ],
+  "readiness_gate": {
+    "title": "Before planting or intensifying irrigation",
+    "proceed_when": [
+      "Relevant available household checks have been completed.",
+      "Water is not persistently ponded in the intended planting area.",
+      "Surface condition and soil-crumb observations have been reviewed together.",
+      "Water quality is understood well enough for the proposed use, or uncertainty is clearly flagged.",
+      "Any amendment recommendation is supported by appropriate evidence or local expert guidance."
+    ],
+    "pause_or_reassess_when": [
+      "Water remains standing after the drainage observation.",
+      "The crumb check and other observations conflict.",
+      "Water source quality is unknown and the proposed action depends on it.",
+      "The system would need to guess an amendment type or quantity.",
+      "Evidence does not distinguish possible sodicity, salinity, and ordinary compaction."
+    ],
+    "evidence_status": "CASE_STUDY_REQUIREMENT",
+    "source_ids": [
+      "SRC_CASE_DOSSIER",
+      "SRC_ICAR_WATER"
+    ]
+  },
+  "sources": [
+    {
+      "id": "SRC_CASE_DOSSIER",
+      "title": "TERRAFORM Scenario 3: Sodic Clay Plateau - Participant Case Study Dossier",
+      "organization": "Competition-provided case study",
+      "url": null,
+      "supports": [
+        "Nine-stage evaluation journey",
+        "Household-only checks",
+        "No instruments or fixed scientific thresholds",
+        "Distinguish sodicity, salinity, compacted clay, and uncertainty"
+      ],
+      "note": "Source supplied in the team's competition PDF."
+    },
+    {
+      "id": "SRC_ICAR_SALT_AFFECTED",
+      "title": "Management of salt affected soils for crop production",
+      "organization": "ICAR, Indian Farming",
+      "url": "https://epubs.icar.org.in/index.php/IndFarm/article/view/84418",
+      "supports": [
+        "Saline and sodic soils differ",
+        "Management may involve crop choice, amendments, organic manure, and drainage"
+      ],
+      "note": "General overview; does not justify a universal treatment or dose for an individual plot."
+    },
+    {
+      "id": "SRC_ICAR_BLACK_SODIC",
+      "title": "Diagnosis, Classification and Management of Black Sodic Soils: An Overview",
+      "organization": "Journal of Soil Salinity and Water Quality",
+      "url": "https://epubs.icar.org.in/index.php/JoSSWQ/article/view/156335",
+      "supports": [
+        "Sodicity can degrade soil physical properties",
+        "Management includes amelioration and organic materials"
+      ],
+      "note": "Background source, not a substitute for site-specific diagnosis."
+    },
+    {
+      "id": "SRC_ICAR_WATER",
+      "title": "Advances in Reclamation and Management of Sodic Waters for Irrigation",
+      "organization": "Journal of Soil Salinity and Water Quality",
+      "url": "https://epubs.icar.org.in/index.php/JoSSWQ/article/view/135698",
+      "supports": [
+        "Poor-quality irrigation water can affect soil health",
+        "Water use and management should be site-specific"
+      ],
+      "note": "Household visual checks cannot establish water suitability."
+    }
+  ],
+  "implementation_notes": {
+    "recommended_use": [
+      "Load this JSON in the backend at startup.",
+      "Keep source facts separate from executable decision rules.",
+      "Return recommendations with explanations and source IDs.",
+      "Display uncertainty instead of hiding it.",
+      "Verify every user-facing treatment and crop claim before the final demo."
+    ],
+    "still_to_add": [
+      "Locally verified crop candidates with maturity ranges and drainage limitations",
+      "Crop-specific planting and growth-stage care",
+      "Verified biological pest-management options",
+      "Tests for mixed and contradictory observations"
+    ]
+  }
+}
