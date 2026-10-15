@@ -101,8 +101,8 @@ function Index() {
         </div>
       </header>
 
-      <div className="mx-auto grid max-w-6xl gap-8 px-4 py-8 lg:grid-cols-[220px_1fr]">
-        <nav aria-label="Assessment progress" className="lg:sticky lg:top-6 lg:self-start">
+      <div className="mx-auto grid max-w-6xl grid-cols-1 gap-8 px-4 py-8 lg:grid-cols-[220px_1fr]">
+        <nav aria-label="Assessment progress" className="min-w-0 lg:sticky lg:top-6 lg:self-start">
           <p className="mb-3 text-xs text-muted-foreground">Stage {Math.min(stage + 1, SUMMARY)} of {SUMMARY}</p>
           <div className="mb-4 h-1 overflow-hidden rounded-full bg-muted lg:hidden"><div className="h-full bg-primary transition-all" style={{ width: `${((stage + 1) / (SUMMARY + 1)) * 100}%` }} /></div>
           <ol className="flex gap-1.5 overflow-x-auto pb-2 lg:flex-col lg:overflow-visible">
